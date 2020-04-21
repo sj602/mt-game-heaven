@@ -1,8 +1,11 @@
 import React from "react";
-import Home from "./components/Home";
 import Navigation from "./components/Navigation";
-import { Switch, Route } from "react-router-dom";
 import { Container, Row, Col } from "react-bootstrap";
+import { Switch, Route } from "react-router-dom";
+import Home from "./components/Home";
+import Movie from "./components/Movie";
+import Song from "./components/Song";
+import Quiz from "./components/Song";
 
 const App = () => {
   return (
@@ -15,7 +18,20 @@ const App = () => {
         </Row>
         <Row>
           <Col>
-            <Home />
+            <Switch>
+              <Route exact path="/">
+                <Home />
+              </Route>
+              <Route path="/movie">
+                <Movie />
+              </Route>
+              <Route path="/song">
+                <Song />
+              </Route>
+              <Route path="/quiz">
+                <Quiz />
+              </Route>
+            </Switch>
           </Col>
         </Row>
       </Container>

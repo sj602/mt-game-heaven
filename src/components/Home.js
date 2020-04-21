@@ -1,12 +1,17 @@
 import React from "react";
-import { Carousel, Jumbotron, Button } from "react-bootstrap";
+import { Carousel, Jumbotron, Button, Row } from "react-bootstrap";
+import heaven from "../images/heaven.jpeg";
 
 const Home = () => {
   return (
     <div>
       <Jumbotron>
         <h1>MT게임천국</h1>
-        <p>다양한 게임을 즐길 수 있는 곳!</p>
+        <Row>
+          <p>다양한 게임을 즐길 수 있는 곳!</p>
+
+          <img style={{ width: 40, height: 40 }} src={heaven} />
+        </Row>
         <p>
           <Button variant="primary">Learn more</Button>
         </p>
