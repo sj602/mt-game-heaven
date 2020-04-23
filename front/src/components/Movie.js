@@ -1,11 +1,20 @@
 import React from "react";
+import { connect } from "react-redux";
 import { Carousel, Jumbotron, Button } from "react-bootstrap";
-import { getHtml } from "../utils/getMovies";
-import jsonp from "jsonp";
+import axios from "axios";
+import { saveMovies } from "../actions/movies";
 
 const Movie = () => {
-  const getData = () => {
-    console.log(getHtml());
+  console.log(this);
+  const getData = async () => {
+    try {
+      const _result = await axios.get(`http://localhost:8000/api/movies`);
+      const result = _result["data"];
+      this.props.saveMovies(result);
+      console.log(this.props);
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (
@@ -18,4 +27,12 @@ const Movie = () => {
   );
 };
 
-export default Movie;
+const mapStateToProps = (state) => ({
+  movies: state.movies,
+});
+
+const mapDispatchToProps = {
+  saveMovies,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Movie);
